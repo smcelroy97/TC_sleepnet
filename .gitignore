@@ -1,4 +1,5 @@
 __pycache__/
+*.txt
 x86_64/
 .idea/
 ray/

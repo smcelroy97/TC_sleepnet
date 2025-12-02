@@ -17,7 +17,7 @@ cut_start=1000; #number of milliseconds to cut out of beginning
 cut_end=1000; #number of milliseconds to cut out of end
 dsample=100; #downsample by factor 'dsample'
 
-temp=np.loadtxt('lfp_nhost=10.txt')
+temp=np.loadtxt('lfp_nhost=64.txt')
 data=temp[0:len(temp):dsample] #downsample data
 time=dsample*dt*np.arange(0,len(data))
 srate = 1000/(dsample*dt) #Hz
@@ -30,4 +30,5 @@ plt.ylabel('Frequency (Hz)')
 plt.colorbar()
 #plt.clim((0,250))
 plt.xlim([10000, 360000])
+plt.savefig('lfp_timefreq.png')
 

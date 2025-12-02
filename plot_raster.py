@@ -22,7 +22,7 @@ inhTime = []
 reTime = [] 
 tcTime = [] 
 
-raster_data = np.loadtxt("raster_nhost=1.txt") #10 threads
+raster_data = np.loadtxt("raster_nhost=64.txt") #10 threads
 
 for i_len in range(len(raster_data)):
     if raster_data[i_len][1] < Npyr:
