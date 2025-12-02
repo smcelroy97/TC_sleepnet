@@ -22,7 +22,7 @@ inhTime = []
 reTime = [] 
 tcTime = [] 
 
-raster_data = np.loadtxt("raster_nhost=10.txt") #10 threads
+raster_data = np.loadtxt("raster_nhost=1.txt") #10 threads
 
 for i_len in range(len(raster_data)):
     if raster_data[i_len][1] < Npyr:
@@ -43,5 +43,6 @@ plt.scatter(pyrTime, pyrList, marker='o', s=5, color='red')
 plt.scatter(inhTime, inhList, marker='o', s=5, color='blue')
 plt.scatter(reTime, reList, marker='o', s=5, color='green')
 plt.scatter(tcTime, tcList, marker='o', s=5, color='orange')
+plt.savefig('raster.png')
 
         

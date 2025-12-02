@@ -7,10 +7,67 @@ import config
 from datetime import datetime
 from neuron import h
 import numpy as np
+# from no_lattice_vox import attach_no_voxel_lattice
 h('load_file("stdgui.hoc")') # need this instead of import gui to get the simulation to be reproducible and not give an LFP flatline
 from network_class import Net
 
-h('CVode[0].use_fast_imem(1)') #see use_fast_imem() at https://www.neuron.yale.edu/neuron/static/new_doc/simctrl/cvode.html  
+h('CVode[0].use_fast_imem(1)') #see use_fast_imem() at https://www.neuron.yale.edu/neuron/static/new_doc/simctrl/cvode.html
+#
+# # --- utilities for coords & recording ---
+#
+#
+# def vox_center_xyz(i, j, k, *, origin, dx):
+#     ox, oy, oz = origin
+#     return (ox + (i + 0.5) * dx,
+#             oy + (j + 0.5) * dx,
+#             oz + (k + 0.5) * dx)
+#
+# def vox_index(i, j, k, n_side):
+#     return (i * n_side + j) * n_side + k
+#
+# def vox_ijk_from_index(idx, n_side):
+#     Nz = n_side
+#     i, r = divmod(idx, n_side * n_side)
+#     j, k = divmod(r, n_side)
+#     return i, j, k
+#
+# def build_voxel_metadata(ret):
+#     """Return a list of dicts: index, (i,j,k), (x,y,z), and hoc pp handle."""
+#     voxels = ret['voxels']; N = ret['n_side']; dx = ret['dx']; origin = ret['origin']
+#     meta = []
+#     for idx, pp in enumerate(voxels):
+#         i, j, k = vox_ijk_from_index(idx, N)
+#         x, y, z = vox_center_xyz(i, j, k, origin=origin, dx=dx)
+#         meta.append({'idx': idx, 'ijk': (i,j,k), 'xyz_um': (x,y,z), 'pp': pp})
+#     return meta
+#
+# def record_voxels(voxel_indices, voxels):
+#     """Return (time_vec, dict idx->Vector) to record conc over time."""
+#     from neuron import h
+#     tvec = h.Vector(); tvec.record(h._ref_t)
+#     rec = {}
+#     for idx in voxel_indices:
+#         v = h.Vector().record(voxels[idx]._ref_conc)
+#         # v.record(voxels[idx]._ref_conc)
+#         # c0 = h.Vector().record(voxels[0]._ref_conc)
+#         rec[idx] = v
+#     return tvec, rec
+#
+# def voxel_snapshot_numpy(voxels, n_side):
+#     """Copy current conc field into a (N,N,N) numpy array."""
+#     import numpy as np
+#     arr = np.empty((n_side, n_side, n_side), dtype=float)
+#     for idx, pp in enumerate(voxels):
+#         i, j, k = vox_ijk_from_index(idx, n_side)
+#         arr[i, j, k] = float(pp.conc)
+#     return arr
+#
+# def closest_voxel_to_xyz(x, y, z, *, origin, dx, n_side):
+#     ix = max(0, min(n_side-1, int((x - origin[0]) // dx)))
+#     iy = max(0, min(n_side-1, int((y - origin[1]) // dx)))
+#     iz = max(0, min(n_side-1, int((z - origin[2]) // dx)))
+#     return ix, iy, iz, vox_index(ix, iy, iz, n_side)
+
   
 def onerun(randSeed,Npyr,Ninh,Nre,Ntc):
        
@@ -152,8 +209,72 @@ def onerun(randSeed,Npyr,Ninh,Nre,Ntc):
             h.cvode.re_init()
         else:
             h.fcurrent()
-        h.frecord_init() 
-       
+        h.frecord_init()
+
+    # # 1) collect thalamus somas (RE/TC) without changing anything else
+    # def thal_somas():
+    #     out = []
+    #     for sec in h.allsec():
+    #         nm = sec.name()
+    #         if ('RE' in nm or 'TC' in nm) and 'soma' in nm:
+    #             out.append(sec)
+    #     return out
+    #
+    # # 2) define coords: keep their concentric-ring x–y, pick a z policy
+    # def soma_xyz(sec):
+    #     # if their model has pt3d coords, keep x–y from it:
+    #     if int(sec.n3d()) > 0:
+    #         x, y = sec.x3d(0), sec.y3d(0)
+    #     else:
+    #         x = y = 0.0
+    #     # z placement: mid-plane of the 110 µm cube
+    #     z = 55.0
+    #     return (x, y, z)
+    #
+    # voxel_data = attach_no_voxel_lattice(
+    #     voxel_size=11,  # size of one voxel in um
+    #     lattice_size=110,  # size of the entire 3d lattice (assuming cube)
+    #     d_phys=3.3,  # diffusion constant, D (um^2/ms)
+    #     lam_ms=500,  # decay constant in ms for simplicity (converted later)
+    #     center_initial=False,  # Value to set initial concentration in center voxel nM
+    #     trapezoidal_ref=True,  # trapezoidal synthesis func from exp reference
+    #     record_line=True
+    # )
+    #
+
+
+    # # 3) attach lattice (no changes to connectivity)
+    # vox = attach_no_voxel_lattice(
+    #     somas=thal_somas(),
+    #     coord_fn=soma_xyz,
+    #     edge_um=110.0,
+    #     n_side=11,
+    #     cube_origin=(0.0, 0.0, 0.0),
+    #     pp_class_name="no_voxel",
+    #     conc_range_name="conc",
+    #     neighbor_fields=("conc_xp", "conc_xn", "conc_yp", "conc_yn", "conc_zp", "conc_zn"),
+    #     D_um2_ms=3.33,
+    #     lam_1_ms=0.001,
+    #     F_nM_ms=10,
+    #     reflect_boundaries=False,
+    #     cell_ptr_name=None,  # e.g., 'no_ext' if your cell mechanism declares POINTER no_ext
+    #     cell_reader_mech=None  # e.g., 'no_reader' if you need to insert a reader mechanism
+    # )
+
+    # print(f"NO lattice: {vox['n_side']}^3 voxels, dx={vox['dx']} µm")
+    #
+    # meta = build_voxel_metadata(vox)
+    #
+    # # pick center line along x at cube mid y,z
+    # N = vox['n_side'];
+    # dx = vox['dx'];
+    # origin = vox['origin']
+    # mid = (N - 1) // 2
+    # line_indices = [vox_index(i, mid, mid, N) for i in range(N)]
+
+
+
+
     # run sim and gather spikes
     config.pc.set_maxstep(10) #see https://www.neuron.yale.edu/neuron/static/new_doc/modelspec/programmatic/network/parcon.html#ParallelContext.set_maxstep, as well as section 2.4 of the Lytton/Salvador paper
     h.dt = 0.025
@@ -214,7 +335,7 @@ def onerun(randSeed,Npyr,Ninh,Nre,Ntc):
         
     
     
-    # plot net raster, save net data and plot cell 0 traces 
+    # plot net raster, save net data and plot cell 0 traces
     '''net.gatherSpikes()  # gather spikes from all nodes onto master node
     if config.idhost==0: #if statement because we don't want every host to plot and save data (that would be redundant)
         #to plot raster data, we need to load the file, then define tVecAll and idVecAll lists so that they exist when the plotRaster method is called
@@ -232,8 +353,9 @@ def onerun(randSeed,Npyr,Ninh,Nre,Ntc):
     del net
     if config.doextra:
         h.cvode.extra_scatter_gather_remove(recording_callback) #removes 'callback', so that we don't have more and more callbacks on progressive iterations
+    # return voxel_data
 
-onerun(config.randSeed,config.Npyr,config.Ninh,config.Nre,config.Ntc)
+voxel_data = onerun(config.randSeed,config.Npyr,config.Ninh,config.Nre,config.Ntc)
 
 config.pc.barrier()
 h.quit()

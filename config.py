@@ -21,7 +21,7 @@ idhost = int(pc.id())
 nhost = int(pc.nhost())
 
 # duration of simulation
-duration=360000.0 #ms
+duration=30000.0 #ms
 t_seg=50.0 #(ms) simulation time between each data dump to node 0
 
 # set randomizer seed
@@ -38,7 +38,7 @@ do_sleepstates = True
 sleep_state = 3  #0 for wake, 1 for S2, 2 for S3, and 3 for REM
 
 # determine whether or not to record LFP
-doextra = True
+doextra = False
 
 # determines cell density (micrometers^2 per cell) for when cells are placed in
 # concentric rings (only need this if doextra==True)
