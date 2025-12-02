@@ -1,200 +1,200 @@
-Ih.cpp: ../mod/Ih.mod $(NOCMODL)
+./ampa_D1.c: ../mod/ampa_D1.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ih.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_D1.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./Ih.o: Ih.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./ampa_D1.o: ./ampa_D1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-ampa.cpp: ../mod/ampa.mod $(NOCMODL)
+./ampa_D2.c: ../mod/ampa_D2.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_D2.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./ampa.o: ampa.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./ampa_D2.o: ./ampa_D2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-ampa_D1.cpp: ../mod/ampa_D1.mod $(NOCMODL)
+./ampa.c: ../mod/ampa.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_D1.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./ampa_D1.o: ampa_D1.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./ampa.o: ./ampa.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-ampa_D2.cpp: ../mod/ampa_D2.mod $(NOCMODL)
+./ampa_NEURON.c: ../mod/ampa_NEURON.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_D2.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_NEURON.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./ampa_D2.o: ampa_D2.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./ampa_NEURON.o: ./ampa_NEURON.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-ampa_NEURON.cpp: ../mod/ampa_NEURON.mod $(NOCMODL)
+./cadecay.c: ../mod/cadecay.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "ampa_NEURON.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadecay.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./ampa_NEURON.o: ampa_NEURON.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./cadecay.o: ./cadecay.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-cadecay.cpp: ../mod/cadecay.mod $(NOCMODL)
+./gaba_A_D2.c: ../mod/gaba_A_D2.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "cadecay.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_A_D2.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./cadecay.o: cadecay.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./gaba_A_D2.o: ./gaba_A_D2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-gaba_A.cpp: ../mod/gaba_A.mod $(NOCMODL)
+./gaba_A.c: ../mod/gaba_A.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_A.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_A.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./gaba_A.o: gaba_A.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./gaba_A.o: ./gaba_A.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-gaba_A_D2.cpp: ../mod/gaba_A_D2.mod $(NOCMODL)
+./gaba_B.c: ../mod/gaba_B.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_A_D2.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_B.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./gaba_A_D2.o: gaba_A_D2.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./gaba_B.o: ./gaba_B.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-gaba_B.cpp: ../mod/gaba_B.mod $(NOCMODL)
+./hva.c: ../mod/hva.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "gaba_B.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "hva.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./gaba_B.o: gaba_B.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./hva.o: ./hva.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-hva.cpp: ../mod/hva.mod $(NOCMODL)
+./Ih.c: ../mod/Ih.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "hva.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ih.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./hva.o: hva.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./Ih.o: ./Ih.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-iT_RE.cpp: ../mod/iT_RE.mod $(NOCMODL)
+./iT_RE.c: ../mod/iT_RE.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iT_RE.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iT_RE.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./iT_RE.o: iT_RE.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./iT_RE.o: ./iT_RE.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-iT_TC.cpp: ../mod/iT_TC.mod $(NOCMODL)
+./iT_TC.c: ../mod/iT_TC.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iT_TC.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "iT_TC.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./iT_TC.o: iT_TC.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./iT_TC.o: ./iT_TC.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-kL.cpp: ../mod/kL.mod $(NOCMODL)
+./kca.c: ../mod/kca.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kL.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kca.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./kL.o: kL.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./kca.o: ./kca.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-kca.cpp: ../mod/kca.mod $(NOCMODL)
+./kdr.c: ../mod/kdr.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kca.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./kca.o: kca.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./kdr.o: ./kdr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-kdr.cpp: ../mod/kdr.mod $(NOCMODL)
+./kdr_re.c: ../mod/kdr_re.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_re.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./kdr.o: kdr.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./kdr_re.o: ./kdr_re.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-kdr_re.cpp: ../mod/kdr_re.mod $(NOCMODL)
+./kdr_tc.c: ../mod/kdr_tc.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_re.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_tc.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./kdr_re.o: kdr_re.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./kdr_tc.o: ./kdr_tc.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-kdr_tc.cpp: ../mod/kdr_tc.mod $(NOCMODL)
+./kL.c: ../mod/kL.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kdr_tc.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kL.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./kdr_tc.o: kdr_tc.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./kL.o: ./kL.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-km.cpp: ../mod/km.mod $(NOCMODL)
+./km.c: ../mod/km.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "km.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "km.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./km.o: km.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./km.o: ./km.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-naf.cpp: ../mod/naf.mod $(NOCMODL)
+./naf.c: ../mod/naf.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./naf.o: naf.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./naf.o: ./naf.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-naf_re.cpp: ../mod/naf_re.mod $(NOCMODL)
+./naf_re.c: ../mod/naf_re.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf_re.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf_re.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./naf_re.o: naf_re.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./naf_re.o: ./naf_re.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-naf_tc.cpp: ../mod/naf_tc.mod $(NOCMODL)
+./naf_tc.c: ../mod/naf_tc.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf_tc.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "naf_tc.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./naf_tc.o: naf_tc.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./naf_tc.o: ./naf_tc.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-nap.cpp: ../mod/nap.mod $(NOCMODL)
+./nap.c: ../mod/nap.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nap.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nap.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./nap.o: nap.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./nap.o: ./nap.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-nmda_D1.cpp: ../mod/nmda_D1.mod $(NOCMODL)
+./nmda_D1.c: ../mod/nmda_D1.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nmda_D1.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "nmda_D1.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./nmda_D1.o: nmda_D1.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./nmda_D1.o: ./nmda_D1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-no_diffusion.cpp: ../mod/no_diffusion.mod $(NOCMODL)
+./no_diffusion.c: ../mod/no_diffusion.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "no_diffusion.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "no_diffusion.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./no_diffusion.o: no_diffusion.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./no_diffusion.o: ./no_diffusion.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
-xtra.cpp: ../mod/xtra.mod $(NOCMODL)
+./xtra.c: ../mod/xtra.mod
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "xtra.mod"  -o "/Users/scoot/TC_sleepnet/x86_64" )
+	(cd "../mod";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "xtra.mod" -o "/home/smcelroy/TC_sleepnet/x86_64")
 
-./xtra.o: xtra.cpp
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/scoot/TC_sleepnet/x86_64/$<\\n"
-	$(CXXCOMPILE) -I"../mod" $(INCLUDES) -fPIC -c "/Users/scoot/TC_sleepnet/x86_64/$<" -o $@
+./xtra.o: ./xtra.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mod" $(INCLUDES) -fPIC -c $< -o $@
 
