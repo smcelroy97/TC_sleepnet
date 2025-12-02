@@ -38,7 +38,7 @@ do_sleepstates = True
 sleep_state = 3  #0 for wake, 1 for S2, 2 for S3, and 3 for REM
 
 # determine whether or not to record LFP
-doextra = False
+doextra = True
 
 # determines cell density (micrometers^2 per cell) for when cells are placed in
 # concentric rings (only need this if doextra==True)
